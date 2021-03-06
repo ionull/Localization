@@ -1,7 +1,8 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Android--Localization-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2890)
 [![JCenter](https://api.bintray.com/packages/akexorcist/maven/localization/images/download.svg)](https://bintray.com/akexorcist/maven/localization) 
 ![Minimum SDK Version](https://img.shields.io/badge/minSdkVersion-14-brightgreen) 
-[![Build Status](https://travis-ci.org/akexorcist/Android-Localization.svg?branch=master)](https://travis-ci.org/akexorcist/Android-Localization) 
+[![Build Status](https://travis-ci.org/akexorcist/Android-Localization.svg?branch=master)](https://travis-ci.org/akexorcist/Android-Localization)
+[![CircleCI](https://circleci.com/github/akexorcist/Localization.svg?style=svg)](https://app.circleci.com/pipelines/github/akexorcist/Localization) 
 
 
 Localization Library
