@@ -11,6 +11,7 @@ open class MainActivityScreen : Screen<MainActivityScreen>() {
     val buttonCustomActivity = KButton { withId(R.id.btn_custom_activity) }
     val buttonStackedActivity = KButton { withId(R.id.btn_stacked_activity) }
     val buttonSimpleFragment = KButton { withId(R.id.btn_simple_fragment) }
+    val buttonDialogFragment = KButton { withId(R.id.btn_dialog_fragment) }
     val buttonNestedFragment = KButton { withId(R.id.btn_nested_fragment) }
     val buttonViewPager = KButton { withId(R.id.btn_view_pager) }
     val buttonListPreferences = KButton { withId(R.id.btn_list_preferences) }
