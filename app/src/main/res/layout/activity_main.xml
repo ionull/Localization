@@ -56,6 +56,13 @@
                 android:text="@string/menu_simple_fragment" />
 
             <Button
+                android:id="@+id/btn_dialog_fragment"
+                style="@style/Button.White.Outline.Menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_dialog_fragment" />
+
+            <Button
                 android:id="@+id/btn_nested_fragment"
                 style="@style/Button.White.Outline.Menu"
                 android:layout_width="match_parent"

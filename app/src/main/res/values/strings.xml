@@ -17,11 +17,13 @@
     <string name="prev" translatable="false"><![CDATA[<]]></string>
     <string name="next" translatable="false"><![CDATA[>]]></string>
     <string name="change_language" translatable="false">Change Language &gt;</string>
+    <string name="open_content" translatable="false">Open content</string>
 
     <string name="menu_simple_activity" translatable="false">Simple Activity</string>
     <string name="menu_custom_activity" translatable="false">Custom Activity</string>
     <string name="menu_stacked_activity" translatable="false">Stacked Activity</string>
     <string name="menu_simple_fragment" translatable="false">Simple Fragment</string>
+    <string name="menu_dialog_fragment" translatable="false">Dialog Fragment</string>
     <string name="menu_nested_fragment" translatable="false">Nested Fragment</string>
     <string name="menu_viewpager" translatable="false">View Pager</string>
     <string name="menu_list_preferences" translatable="false">Preference Fragment</string>
