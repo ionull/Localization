@@ -1,6 +1,7 @@
 package com.akexorcist.localizationactivity.core
 
 import android.content.Context
+import android.os.Build
 import androidx.annotation.VisibleForTesting
 import java.util.*
 
@@ -29,22 +30,38 @@ object LanguageSetting {
             Locale.ENGLISH
         }
 
-    @JvmStatic
-    fun setLanguage(context: Context, locale: Locale) {
-        Locale.setDefault(locale)
-        setPreference(context, KEY_CURRENT_LANGUAGE, locale.toString())
+    private fun Locale.forSaving(): String {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            toLanguageTag()
+        } else {
+            toString()
+        }
     }
 
-    @JvmStatic
-    fun getLanguage(context: Context): Locale? =
-        getPreference(context, KEY_CURRENT_LANGUAGE)?.let { locale: String ->
-            val info = locale.split("_")
+    private fun String.toLocale(): Locale? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Locale.forLanguageTag(this)
+        } else {
+            val info = split("_")
             when (info.size) {
                 1 -> Locale(info[0])
                 2 -> Locale(info[0], info[1])
                 3 -> Locale(info[0], info[1], info[2])
                 else -> null
             }
+        }
+    }
+
+    @JvmStatic
+    fun setLanguage(context: Context, locale: Locale) {
+        Locale.setDefault(locale)
+        setPreference(context, KEY_CURRENT_LANGUAGE, locale.forSaving())
+    }
+
+    @JvmStatic
+    fun getLanguage(context: Context): Locale? =
+        getPreference(context, KEY_CURRENT_LANGUAGE)?.let { locale: String ->
+            locale.toLocale()
         } ?: run {
             null
         }

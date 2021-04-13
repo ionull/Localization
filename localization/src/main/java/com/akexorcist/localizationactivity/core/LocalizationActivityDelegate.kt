@@ -3,6 +3,9 @@ package com.akexorcist.localizationactivity.core
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
@@ -31,6 +34,32 @@ open class LocalizationActivityDelegate(val activity: Activity) {
     fun onCreate() {
         setupLanguage()
         checkBeforeLocaleChanging()
+    }
+
+    @Throws(PackageManager.NameNotFoundException::class)
+    private fun getActivityList(): Array<ActivityInfo?>? {
+        val pm: PackageManager = activity.packageManager
+        val info: PackageInfo = pm.getPackageInfo(activity.applicationContext.packageName, PackageManager.GET_ACTIVITIES)
+        return info.activities
+    }
+
+    fun afterCreate() {
+        getActivityList()?.filterNotNull()?.find {
+            it.name == activity.javaClass.name
+        }?.let { ai ->
+            activity.run {
+                val appRes = applicationInfo.labelRes
+                val labelRes = if (ai.labelRes != 0) {
+                    ai.labelRes
+                } else appRes
+
+                try {
+                    setTitle(labelRes)
+                } catch (e: Throwable) {
+                    setTitle(appRes)
+                }
+            }
+        }
     }
 
     // If activity is run to back stack. So we have to check if this activity is resume working.
