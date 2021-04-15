@@ -152,6 +152,18 @@ open class LocalizationActivityDelegate(val activity: Activity) {
         }
     }
 
+    fun setFollowSystemLanguage(context: Context) {
+        LanguageSetting.setFollowSystemLanguage(context)
+    }
+
+    fun unsetFollowSystemLanguage(context: Context) {
+        LanguageSetting.unsetFollowSystemLanguage(context)
+    }
+
+    fun isFollowSystem(context: Context): Boolean {
+        return LanguageSetting.isFollowSystem(context)
+    }
+
     // Provide method to set application language by country name.
     fun setLanguage(context: Context, newLanguage: String) {
         val locale = Locale(newLanguage)
